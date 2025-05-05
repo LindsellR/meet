@@ -23,7 +23,7 @@ Currently, two official plugins are available:
   **Scenario:** The User can collapse an event to hide details  
     - **Given** the user has expanded an event to view its details  
     - **When** the user clicks on the "Hide Details" button of that event  
-    - **Then** the details of that event should be hidden  
+    - **Then** the details of that event should be hidden and the event should display it's collapsed default state.  
 
 
 ## Feature 3: Specify Number of Events
@@ -32,7 +32,7 @@ Currently, two official plugins are available:
   **Scenario:** When the user hasn’t specified a number, 32 events are shown by default  
     - **Given** the user has opened the app for the first time and chosen a city to find events  
     - **When** the list of events is displayed  
-    - **Then** 32 events should be shown by default  
+    - **Then** a maximum of 32 events should be shown by default  
 
   **Scenario:** The User can change the number of events displayed  
     - **Given** that the user is viewing the list of events  
@@ -47,7 +47,7 @@ Currently, two official plugins are available:
     - **Given** the user has previously opened the app with an internet connection
     and the event data has been cached  
     - **When** the user opens the app without an internet connection  
-    - **Then** the cached event data should be displayed  
+    - **Then** the cached event data should still be displayed  
 
   **Scenario:** Show error when user changes search settings (city, number of events)  
     - **Given** the user is offline  
