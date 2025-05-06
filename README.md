@@ -72,5 +72,6 @@ Currently, two official plugins are available:
 
 ## Architectural Diagram
     
-    ![Architectural Diagram of Data Flow 001](https://github.com/user-attachments/assets/1a688319-4675-4731-ad4a-d771fac109e8)
+ ![Architectural_Diagram 001](https://github.com/user-attachments/assets/726a5f40-d34e-4a1b-836d-8efd545376b4)
+
 
