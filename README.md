@@ -69,3 +69,8 @@ Currently, two official plugins are available:
     - **Given** that the user is viewing the events dashboard  
     - **When** the event data is loaded  
     - **Then** a chart should be displayed showing the number of upcoming events per city  
+
+## Architectural Diagram
+    
+    ![Architectural Diagram of Data Flow 001](https://github.com/user-attachments/assets/1a688319-4675-4731-ad4a-d771fac109e8)
+
