@@ -27,4 +27,4 @@ functions:
     events:
       - http:
           path: api/get-events/{access_token}
-          method: get
+          method: get 
