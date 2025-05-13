@@ -72,6 +72,7 @@ Currently, two official plugins are available:
 
 ## Architectural Diagram
     
- ![Architectural_Diagram 001](https://github.com/user-attachments/assets/726a5f40-d34e-4a1b-836d-8efd545376b4)
+[React Component Diagram.pdf](https://github.com/user-attachments/files/20179431/React.Component.Diagram.pdf)
+
 
 
