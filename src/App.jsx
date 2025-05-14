@@ -16,14 +16,34 @@ const App = () => {
     fetchData();
   }, [ currentNOE, currentCity]);
 
+  // const fetchData = async () => {
+  //   const allEvents = await getEvents();
+  //   const filteredEvents = currentCity === "See all cities" 
+  //     ? allEvents 
+  //     : allEvents.filter(event => event.location === currentCity)
+  //     console.log(filteredEvents)
+  //   setEvents(filteredEvents.slice(0, currentNOE));
+  //   setAllLocations(extractLocations(allEvents));
+  // }
   const fetchData = async () => {
     const allEvents = await getEvents();
-    const filteredEvents = currentCity === "See all cities" 
-      ? allEvents 
-      : allEvents.filter(event => event.location === currentCity)
+  
+    if (!allEvents) {
+      console.error("No events returned from API.");
+      setEvents([]);
+      return;
+    }
+  
+    const filteredEvents = currentCity === "See all cities"
+      ? allEvents
+      : allEvents.filter(event => event.location === currentCity);
+  
+    console.log("Filtered Events:", filteredEvents);
+  
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
-  }
+  };
+  
 
   return (
     <div className="App">
