@@ -28,8 +28,8 @@ const App = () => {
   const fetchData = async () => {
     const allEvents = await getEvents();
   
-    if (!allEvents) {
-      console.error("No events returned from API.");
+    if (!Array.isArray(allEvents) || allEvents.length === 0) {
+      console.warn("No valid events returned from API.");
       setEvents([]);
       return;
     }
@@ -39,10 +39,10 @@ const App = () => {
       : allEvents.filter(event => event.location === currentCity);
   
     console.log("Filtered Events:", filteredEvents);
-  
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   };
+  
   
 
   return (

@@ -4,6 +4,7 @@ import Event from "./Event";
 
 
 const EventList = ({ events }) => {
+  console.log("Rendering EventList with events:", events);
  return (
    <ul id="event-list">
      {events? events.map(event => <Event key={event.id}event={event} />): null}

@@ -54,12 +54,22 @@ export const getEvents = async () => {
  if (token) {
     removeQuery();
     const url =  "https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events" + "/" + token;
+
+    console.log("Calling API with URL:", url);
+
     const response = await fetch(url);
     const result = await response.json();
-    if (result) {
+    console.log("API response:", result);
+
+      if (result && result.events && Array.isArray(result.events)) {
       return result.events;
-    } else return null;
+    } else {
+      console.warn("Unexpected API response format:", result);
+      return [];
+    }
   }
+
+  return [];
 };
 
 const getToken = async (code) => {
