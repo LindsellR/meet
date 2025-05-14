@@ -49,23 +49,19 @@ export const getEvents = async () => {
  }
 
  const token = await getAccessToken();
- console.log("Token to be used for API call:", token);
 
  if (token) {
     removeQuery();
     const url =  "https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events" + "/" + token;
 
-    console.log("Calling API with URL:", url);
-
     const response = await fetch(url);
     const result = await response.json();
-    console.log("API response:", result);
 
     const events = result?.data?.items;
     if (Array.isArray(events)) {
       return events;
     } else {
-      console.warn("No events found in API response:", result);
+     
       return [];
     }
   }
@@ -100,7 +96,6 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
-      console.log("No code found. Redirecting to auth...");
       const response = await fetch(
         "https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-auth-url"
       );
@@ -108,9 +103,7 @@ export const getAccessToken = async () => {
       const { authUrl } = result;
       return (window.location.href = authUrl);
     }
-    console.log("Code found. Fetching token...");
     return code ? await getToken(code) : null;
   }
-  console.log("Valid access token:", accessToken);
   return accessToken;
 };
