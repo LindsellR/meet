@@ -61,10 +61,11 @@ export const getEvents = async () => {
     const result = await response.json();
     console.log("API response:", result);
 
-      if (result && result.events && Array.isArray(result.events)) {
-      return result.events;
+    const events = result?.data?.items;
+    if (Array.isArray(events)) {
+      return events;
     } else {
-      console.warn("Unexpected API response format:", result);
+      console.warn("No events found in API response:", result);
       return [];
     }
   }
