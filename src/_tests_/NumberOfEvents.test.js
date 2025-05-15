@@ -1,6 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
+import App from '../App';
+
 
 describe('<NumberOfEvents /> component', () => {
   test('renders input with default value of 32', () => {
@@ -32,5 +35,28 @@ describe('<NumberOfEvents /> component', () => {
     // Simulate re-render with updated prop
     rerender(<NumberOfEvents number={10} onNumberChange={handleChange} />);
     expect(getByRole('textbox')).toHaveValue("10");
+  });
+});
+
+describe('<NumberOfEvents /> integration', () => {
+
+  test('updates event list when user changes number of events', async () => {
+    render(<App />);
+    const user = userEvent.setup();
+
+    // Wait for initial render
+    await screen.findAllByTestId('event');
+
+    // Find the input field and simulate user changing the number to 10
+    const input = screen.getByTestId('number-input');
+
+    await user.clear(input);
+    await user.type(input, "10");
+
+    // Assert that only 10 events are rendered 
+    await waitFor(async () => {
+      const updatedEvents = await screen.findAllByTestId('event');
+      expect(updatedEvents.length).toBeLessThanOrEqual(10);
+    });
   });
 });

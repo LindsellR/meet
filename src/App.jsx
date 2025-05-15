@@ -21,29 +21,10 @@ const App = () => {
     const filteredEvents = currentCity === "See all cities" 
       ? allEvents 
       : allEvents.filter(event => event.location === currentCity)
-      console.log(filteredEvents)
+      //console.log(filteredEvents)
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
-  // const fetchData = async () => {
-  //   const allEvents = await getEvents();
-  
-  //   if (!Array.isArray(allEvents) || allEvents.length === 0) {
-  //     console.warn("No valid events returned from API.");
-  //     setEvents([]);
-  //     return;
-  //   }
-  
-  //   const filteredEvents = currentCity === "See all cities"
-  //     ? allEvents
-  //     : allEvents.filter(event => event.location === currentCity);
-  
-  //   console.log("Filtered Events:", filteredEvents);
-  //   setEvents(filteredEvents.slice(0, currentNOE));
-  //   setAllLocations(extractLocations(allEvents));
-  // };
-  
-  
 
   return (
     <div className="App">
