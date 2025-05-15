@@ -40,7 +40,7 @@ describe('Event component', () => {
     fireEvent.click(screen.getByText('Show Details'));
     expect(await screen.findByTestId('event-description')).toBeInTheDocument();
 
-    // Now click to hide details
+    // Click to hide details
     fireEvent.click(screen.getByText('Hide Details'));
 
     // Description should disappear

@@ -7,7 +7,6 @@
   min-height: 100vh;
   padding: 2% 5%;
   box-sizing: border-box;
-  /*background-color: #f7f7f7;*/ 
 }
 
 
@@ -91,7 +90,7 @@ padding-right: 10px;
 
 .event {
   padding: 10px 10px 35px;
-  margin: 20px auto; /* Center and give space */
+  margin: 20px auto; 
   text-align: left;
   border: 1px solid #8e7b7b;
   border-radius: 4px;
