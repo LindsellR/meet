@@ -1,7 +1,6 @@
 import mockData from './mock-data'
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css'; // Optional: styles for the progress bar
-
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' // Optional: styles for the progress bar
 
 /**
  *
@@ -45,11 +44,11 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-  NProgress.start();
+  NProgress.start()
 
-  if (window.location.href.startsWith("http://localhost")) {
-    NProgress.done();
-    return mockData;
+  if (window.location.href.startsWith('http://localhost')) {
+    NProgress.done()
+    return mockData
   }
 
   const token = await getAccessToken()
