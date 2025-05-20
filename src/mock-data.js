@@ -1367,3 +1367,6 @@ const mockData =  [
 ];
 
 export default mockData;
+export const getEvents = async () => {
+  return mockData;
+};

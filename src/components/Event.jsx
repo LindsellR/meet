@@ -4,7 +4,7 @@ const Event = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false)
 
   return (
-    <li data-testid="event" class="event">
+    <li data-testid="event" className="event">
       <h3>{event.summary}</h3>
 
       <p data-testid="event-start">
@@ -14,7 +14,7 @@ const Event = ({ event }) => {
       <p data-testid="event-location">Location: {event.location}</p>
 
       <button
-        class="details-btn"
+        className="details-btn"
         onClick={() => setShowDetails(!showDetails)}
         aria-expanded={showDetails}
         data-testid="toggle-details"
@@ -23,7 +23,7 @@ const Event = ({ event }) => {
       </button>
 
       {showDetails && (
-        <div class="description" data-testid="event-description">
+        <div className="description" data-testid="event-description">
           <p>{event.description}</p>
           <p>{event.location}</p>
         </div>

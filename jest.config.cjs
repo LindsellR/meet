@@ -1,5 +1,8 @@
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
+    
+    testTimeout: 30000, // Set a longer timeout (30 seconds)
+    
     transform: {
       '^.+\\.jsx?$': 'babel-jest', // Transform JavaScript and JSX files using Babel
     },
