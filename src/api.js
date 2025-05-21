@@ -47,7 +47,6 @@ export const getEvents = async () => {
   NProgress.start()
 
   if (window.location.href.startsWith('http://localhost')) {
-    NProgress.done()
     return mockData
   }
 
@@ -64,6 +63,9 @@ export const getEvents = async () => {
     const result = await response.json()
 
     const events = result?.data?.items
+
+    NProgress.done()
+
     if (Array.isArray(events)) {
       return events
     } else {
