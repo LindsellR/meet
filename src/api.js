@@ -44,37 +44,33 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-  NProgress.start()
+  NProgress.start();
 
-  if (window.location.href.startsWith('http://localhost')) {
-    return mockData
-  }
-
-  const token = await getAccessToken()
-
-  if (token) {
-    removeQuery()
-    const url =
-      'https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events' +
-      '/' +
-      token
-
-    const response = await fetch(url)
-    const result = await response.json()
-
-    const events = result?.data?.items
-
-    NProgress.done()
-
-    if (Array.isArray(events)) {
-      return events
-    } else {
-      return []
+  try {
+    if (window.location.href.startsWith('http://localhost')) {
+      return mockData;
     }
-  }
 
-  return []
-}
+    const token = await getAccessToken();
+
+    if (token) {
+      removeQuery();
+      const url = 'https://.../get-events/' + token;
+      const response = await fetch(url);
+      const result = await response.json();
+      const events = result?.data?.items;
+      return Array.isArray(events) ? events : [];
+    }
+
+    return [];
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
+  } finally {
+    NProgress.done(); // ✅ Always ends the progress bar
+  }
+};
+
 
 const getToken = async (code) => {
   try {
