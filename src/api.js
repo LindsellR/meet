@@ -79,7 +79,7 @@ const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code)
 
     const response = await fetch(
-      ' https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/token' +
+      'https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/token' +
         '/' +
         encodeCode
     )
@@ -90,7 +90,7 @@ const getToken = async (code) => {
     access_token && localStorage.setItem('access_token', access_token)
     return access_token
   } catch (error) {
-    error.json()
+    console.error(error)
   }
 }
 
