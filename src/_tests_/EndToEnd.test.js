@@ -50,7 +50,7 @@ describe('Filter evensts by City', () => {
     )
 
     expect(eventTexts.length).toBeGreaterThan(0)
-    expect(eventTexts.every((text) => text.includes('Berlin'))).toBe(false)
+    expect(eventTexts.every((text) => text.includes('Berlin'))).toBe(true)
   })
 })
 
