@@ -107,15 +107,47 @@ label {
   position: absolute;
   right: 15px;
   bottom: 15px;
-  width: 200px;
-  padding: 5px 8px;
+  max-width: 90%;
+  width: fit-content;
+  padding: 8px 12px;
+  font-size: 14px;
   border-radius: 4px;
   background-color: #f7f7f7;
   outline: 1px solid #333;
   outline-offset: 2px;
   cursor: pointer;
+  word-wrap: break-word;
 }
 .details-btn:focus {
   outline: 2px solid #1976d2;
   outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .App * {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .city,
+  .suggestions,
+  #number-of-events {
+    width: 100%;
+  }
+
+  .event {
+    padding: 10px;
+  }
+
+  .details-btn {
+    position: static;
+    display: block;
+    margin: 15px auto 0;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  label {
+    padding: 0;
+  }
 }
