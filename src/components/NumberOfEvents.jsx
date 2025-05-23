@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const NumberOfEvents = ({ number, onNumberChange }) => {
+const NumberOfEvents = ({ number, onNumberChange, setErrorAlert }) => {
   const [inputValue, setInputValue] = useState(number.toString())
 
   useEffect(() => {
@@ -12,7 +12,13 @@ const NumberOfEvents = ({ number, onNumberChange }) => {
     setInputValue(value)
 
     const intValue = parseInt(value, 10)
-    if (!isNaN(intValue) && intValue > 0) {
+
+    if (value === '') {
+      setErrorAlert?.('Please enter a number') // gracefully handle no input
+    } else if (isNaN(intValue) || intValue <= 0) {
+      setErrorAlert?.('Please enter a positive number')
+    } else {
+      setErrorAlert?.('') // Clear error
       onNumberChange(intValue)
     }
   }

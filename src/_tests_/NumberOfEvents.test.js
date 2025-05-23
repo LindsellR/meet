@@ -6,7 +6,13 @@ import App from '../App'
 
 describe('<NumberOfEvents /> component', () => {
   test('renders input with default value of 32', () => {
-    render(<NumberOfEvents number={32} onNumberChange={() => {}} />)
+    render(
+      <NumberOfEvents
+        number={32}
+        onNumberChange={() => {}}
+        setErrorAlert={() => {}}
+      />
+    )
     const input = screen.getByLabelText(/Number of events/i)
     expect(input).toBeInTheDocument()
     expect(input).toHaveValue('32')
@@ -39,7 +45,8 @@ describe('<NumberOfEvents /> component', () => {
 
 describe('<NumberOfEvents /> integration', () => {
   test('updates event list when user changes number of events', async () => {
-    render(<App />)
+    render(<App setErrorAlert={() => {}} />)
+
     const user = userEvent.setup()
 
     // Wait for initial render

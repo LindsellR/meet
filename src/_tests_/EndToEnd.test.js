@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 
-describe('Filter evensts by City', () => {
+describe('Filter events by City', () => {
   let browser
   let page
   beforeAll(async () => {

@@ -122,6 +122,15 @@ label {
   outline: 2px solid #1976d2;
   outline-offset: 3px;
 }
+
+.alerts-container {
+ position: fixed;
+ top: 0px;
+ left: 20px;
+ width: 250px;
+ z-index: 1000;
+}
+
 @media (max-width: 600px) {
   .App * {
     width: 100%;
