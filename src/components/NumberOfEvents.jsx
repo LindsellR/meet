@@ -14,9 +14,9 @@ const NumberOfEvents = ({ number, onNumberChange, setErrorAlert }) => {
     const intValue = parseInt(value, 10)
 
     if (value === '') {
-      setErrorAlert?.('Please enter a number') // gracefully handle no input
+      setErrorAlert?.('Please enter a positive number') // gracefully handle no input
     } else if (isNaN(intValue) || intValue <= 0) {
-      setErrorAlert?.('Please enter a positive number')
+      setErrorAlert?.('Please enter a number')
     } else {
       setErrorAlert?.('') // Clear error
       onNumberChange(intValue)
