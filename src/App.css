@@ -124,11 +124,18 @@ label {
 }
 
 .alerts-container {
- position: fixed;
- top: 0px;
- left: 20px;
- width: 250px;
- z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center; 
+}
+.Alert {
+  max-width: 600px;    
+  width: 100%;
+  pointer-events: auto; 
 }
 
 @media (max-width: 600px) {
