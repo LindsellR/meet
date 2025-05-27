@@ -13,7 +13,7 @@ const App = () => {
   const [events, setEvents] = useState([])
   const [currentCity, setCurrentCity] = useState('See all cities')
   const [infoAlert, setInfoAlert] = useState('')
-  const [errorAlert, setErrorAlert] = useState ('')
+  const [errorAlert, setErrorAlert] = useState('')
 
   useEffect(() => {
     fetchData()
@@ -30,26 +30,31 @@ const App = () => {
     setAllLocations(extractLocations(allEvents))
   }
 
- return (
-   <div className="App">
-     <div className="alerts-container">
-      {infoAlert.length > 0 && <InfoAlert text={infoAlert} /> }
-      {errorAlert.length > 0 && <ErrorAlert text={errorAlert} /> }
-     </div>
+  return (
+    <div className="App">
+      <header>
+        <h1>Welcome to My Meet App</h1>
+      </header>
+      <p>Search a city nearby to find a meet near you</p>
+      <div className="alerts-container">
+        {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
+        {errorAlert.length > 0 && <ErrorAlert text={errorAlert} />}
+      </div>
 
-    <CitySearch 
-    allLocations={allLocations} 
-    setCurrentCity={setCurrentCity}
-    setInfoAlert={setInfoAlert} />
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={setCurrentCity}
+        setInfoAlert={setInfoAlert}
+      />
 
-    <NumberOfEvents
-      number={currentNumberOfEvents}
-      onNumberChange={setCurrentNumberOfEvents}
-      setErrorAlert={setErrorAlert}
-    />
+      <NumberOfEvents
+        number={currentNumberOfEvents}
+        onNumberChange={setCurrentNumberOfEvents}
+        setErrorAlert={setErrorAlert}
+      />
       <EventList events={events} />
     </div>
- );
+  )
 }
 
 export default App
