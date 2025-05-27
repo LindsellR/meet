@@ -54,7 +54,6 @@ const App = () => {
       <header>
         <h1>Welcome to My Meet App</h1>
       </header>
-      <p>Search a city nearby to find a meet near you</p>
 
       <div className="alerts-container">
         {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
