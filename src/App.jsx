@@ -3,7 +3,7 @@ import CitySearch from './components/CitySearch'
 import EventList from './components/EventList'
 import NumberOfEvents from './components/NumberOfEvents'
 import { extractLocations, getEvents } from './api'
-import { InfoAlert, ErrorAlert } from './components/Alert'
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert'
 
 import './App.css'
 
@@ -14,10 +14,29 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState('See all cities')
   const [infoAlert, setInfoAlert] = useState('')
   const [errorAlert, setErrorAlert] = useState('')
+  const [warningAlert, setWarningAlert] = useState('')
 
-  useEffect(() => {
+  useEffect(()=> {
     fetchData()
-  }, [currentNumberOfEvents, currentCity])
+  }, [currentNumberOfEvents, currentCity]);
+  
+  // Listen to online/offline status
+  useEffect(() => {
+    const handleOffline = () =>
+      setWarningAlert('You are currently offline. The displayed list may not be up to date.');
+    const handleOnline = () => setWarningAlert('');
+
+    // Check initial state
+    if (!navigator.onLine) handleOffline();
+
+    window.addEventListener('offline', handleOffline);
+    window.addEventListener('online', handleOnline);
+
+    return () => {
+      window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('online', handleOnline);
+    };
+  }, []);
 
   const fetchData = async () => {
     const allEvents = await getEvents()
@@ -36,9 +55,11 @@ const App = () => {
         <h1>Welcome to My Meet App</h1>
       </header>
       <p>Search a city nearby to find a meet near you</p>
+
       <div className="alerts-container">
         {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
         {errorAlert.length > 0 && <ErrorAlert text={errorAlert} />}
+        {warningAlert.length > 0 && <WarningAlert text={warningAlert} />}
       </div>
 
       <CitySearch
@@ -54,7 +75,7 @@ const App = () => {
       />
       <EventList events={events} />
     </div>
-  )
-}
+  );
+};
 
 export default App
