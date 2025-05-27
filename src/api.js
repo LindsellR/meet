@@ -50,28 +50,40 @@ export const getEvents = async () => {
     if (window.location.href.startsWith('http://localhost')) {
       return mockData
     }
-
+        if (!navigator.onLine) {
+      const events = localStorage.getItem("lastEvents");
+      return events ? JSON.parse(events) : [];
+    }
     const token = await getAccessToken()
 
     if (token) {
       removeQuery()
       const url = `https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events/${token}`
-      const response = await fetch(url)
 
-      if (!response.ok) throw new Error('Failed to fetch events')
-
-      const result = await response.json()
-      const events = result?.data?.items
-
-      return Array.isArray(events) ? events : []
+      try {
+        const response = await fetch(url)
+        const result = await response.json()
+        const events = result?.data?.items
+        if (Array.isArray(events)) {
+          localStorage.setItem('lastEvents', JSON.stringify(events))
+          return events
+        }
+      } catch (err) {
+        console.warn('Network fetch failed, trying localStorage fallback...')
+        const cached = localStorage.getItem('lastEvents')
+        if (cached) {
+          return JSON.parse(cached)
+        }
+      }
     }
 
     return []
   } catch (err) {
     console.error('getEvents error:', err)
-    return []
+    const cached = localStorage.getItem('lastEvents')
+    return cached ? JSON.parse(cached) : []
   } finally {
-    NProgress.done() // 🔒 Ensure this always runs
+    NProgress.done()
   }
 }
 
