@@ -44,48 +44,49 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-  NProgress.start()
+  NProgress.start();
 
   try {
     if (window.location.href.startsWith('http://localhost')) {
-      return mockData
-    }
-        if (!navigator.onLine) {
-      const events = localStorage.getItem("lastEvents");
-      return events ? JSON.parse(events) : [];
-    }
-    const token = await getAccessToken()
-
-    if (token) {
-      removeQuery()
-      const url = `https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events/${token}`
-
-      try {
-        const response = await fetch(url)
-        const result = await response.json()
-        const events = result?.data?.items
-        if (Array.isArray(events)) {
-          localStorage.setItem('lastEvents', JSON.stringify(events))
-          return events
-        }
-      } catch (err) {
-        console.warn('Network fetch failed, trying localStorage fallback...')
-        const cached = localStorage.getItem('lastEvents')
-        if (cached) {
-          return JSON.parse(cached)
-        }
-      }
+      return mockData;
     }
 
-    return []
+    const token = await getAccessToken();
+    if (!token) throw new Error("Access token is missing");
+
+    removeQuery();
+
+    const url = `https://egicgyfyfe.execute-api.ap-southeast-2.amazonaws.com/dev/api/get-events/${token}`;
+
+    // Check if offline before fetch
+    if (!navigator.onLine) {
+      const cached = localStorage.getItem("lastEvents");
+      return cached ? JSON.parse(cached) : [];
+    }
+
+    // Try to fetch online data
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+    const result = await response.json();
+    const events = result?.data?.items;
+
+    if (Array.isArray(events)) {
+      localStorage.setItem("lastEvents", JSON.stringify(events));
+      return events;
+    }
+
+    // If no events from server, fall back
+    throw new Error("No valid events received");
+
   } catch (err) {
-    console.error('getEvents error:', err)
-    const cached = localStorage.getItem('lastEvents')
-    return cached ? JSON.parse(cached) : []
+    console.error("getEvents error:", err);
+    const cached = localStorage.getItem("lastEvents");
+    return cached ? JSON.parse(cached) : [];
   } finally {
-    NProgress.done()
+    NProgress.done();
   }
-}
+};
 
 const getToken = async (code) => {
   try {
