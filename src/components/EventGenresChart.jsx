@@ -12,10 +12,14 @@ const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
 
   const genres = ['React', 'Javascript', 'Node', 'JQuery', 'Angular']
+  
+
 
   useEffect(() => {
+    console.log(getData());
     setData(getData())
   }, [`${events}`])
+ 
 
   const getData = () => {
     return genres.map((genre) => {
