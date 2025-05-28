@@ -24,8 +24,8 @@ describe('Filter events by City', () => {
   })
 
   test('User should see a list of suggestions when they search for a city.', async () => {
-    await page.click('.city')
-    await page.type('.city', 'Berlin')
+    await page.click('.input')
+    await page.type('.input', 'Berlin')
     await page.waitForSelector('.suggestions li')
 
     const suggestions = await page.$$eval('.suggestions li', (items) =>
@@ -37,8 +37,8 @@ describe('Filter events by City', () => {
   })
 
   test('User can select a city from the suggested list.', async () => {
-    await page.click('.city')
-    await page.type('.city', 'Berlin')
+    await page.click('.input')
+    await page.type('.input', 'Berlin')
 
     await page.waitForSelector('.suggestions li')
     await page.click('.suggestions li') // Click first matching suggestion
