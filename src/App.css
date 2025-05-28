@@ -139,18 +139,9 @@ label {
   outline: 2px solid #1976d2;
   outline-offset: 3px;
 }
-
-/* .alerts-container {
-  margin: 0, auto;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  padding: 0.75rem;
-  display: flex;  
-  align-items: center;
-  justify-content: center; 
-} */
+.charts-container {
+  grid-template-columns: 1fr 1fr;
+}
 
 .Alert {
   max-width: 600px;    
@@ -165,6 +156,7 @@ label {
   align-items: center;
   justify-content: center; 
 }
+
 
 @media (max-width: 600px) {
   .App * {
@@ -188,5 +180,11 @@ label {
     width: 100%;
     max-width: 300px;
     text-align: center;
+  }
+}
+
+@media (max-width:768) {
+  .charts-container {
+    grid-template-columns: 1fr;
   }
 }
