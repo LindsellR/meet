@@ -140,6 +140,7 @@ label {
   outline-offset: 3px;
 }
 .charts-container {
+  display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
@@ -183,7 +184,7 @@ label {
   }
 }
 
-@media (max-width:768) {
+@media (max-width:768px) {
   .charts-container {
     grid-template-columns: 1fr;
   }
