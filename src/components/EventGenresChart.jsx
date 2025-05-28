@@ -24,7 +24,7 @@ const EventGenresChart = ({ events }) => {
   const getData = () => {
     return genres.map((genre) => {
       const filteredEvents = events.filter((event) =>
-        event.summary.includes(genre)
+         event.summary?.toLowerCase().includes(genre.toLowerCase())
       )
       return {
         name: genre,
@@ -68,7 +68,7 @@ const EventGenresChart = ({ events }) => {
          fill="#8884d8"
          labelLine={false}
          label={renderCustomizedLabel}
-         outerRadius={150}           
+         outerRadius={120}           
        />
      </PieChart>
    </ResponsiveContainer>

@@ -13,7 +13,7 @@
   width: 100%;
   text-align: center;
   box-sizing: border-box;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
 }
 
@@ -142,6 +142,8 @@ label {
 .charts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .Alert {
