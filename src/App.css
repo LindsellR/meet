@@ -23,11 +23,12 @@ ul {
 }
 header h1 {
   width: 100%;
-  background-color: #282c34;
+  background-color: #3f4758;
   padding: 1.5rem;
   color: white;
   text-align: center;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 p {
@@ -38,6 +39,7 @@ p {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .form-group {
@@ -138,19 +140,30 @@ label {
   outline-offset: 3px;
 }
 
-.alerts-container {
+/* .alerts-container {
+  margin: 0, auto;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
   padding: 0.75rem;
-  display: flex;
+  display: flex;  
+  align-items: center;
   justify-content: center; 
-}
+} */
+
 .Alert {
   max-width: 600px;    
   width: 100%;
   pointer-events: auto; 
+  margin: 0, auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem;
+  display: inline-flex;  
+  align-items: center;
+  justify-content: center; 
 }
 
 @media (max-width: 600px) {

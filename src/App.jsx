@@ -5,6 +5,7 @@ import EventList from './components/EventList'
 import NumberOfEvents from './components/NumberOfEvents'
 import { extractLocations, getEvents } from './api'
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert'
+import EventGenresChart from './components/EventGenresChart'
 
 import './App.css'
 
@@ -17,27 +18,29 @@ const App = () => {
   const [errorAlert, setErrorAlert] = useState('')
   const [warningAlert, setWarningAlert] = useState('')
 
-  useEffect(()=> {
+  useEffect(() => {
     fetchData()
-  }, [currentNumberOfEvents, currentCity]);
-  
+  }, [currentNumberOfEvents, currentCity])
+
   // Listen to online/offline status
   useEffect(() => {
     const handleOffline = () =>
-      setWarningAlert('You are currently offline. The displayed list may not be up to date.');
-    const handleOnline = () => setWarningAlert('');
+      setWarningAlert(
+        'You are currently offline. The displayed list may not be up to date.'
+      )
+    const handleOnline = () => setWarningAlert('')
 
     // Check initial state
-    if (!navigator.onLine) handleOffline();
+    if (!navigator.onLine) handleOffline()
 
-    window.addEventListener('offline', handleOffline);
-    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline)
+    window.addEventListener('online', handleOnline)
 
     return () => {
-      window.removeEventListener('offline', handleOffline);
-      window.removeEventListener('online', handleOnline);
-    };
-  }, []);
+      window.removeEventListener('offline', handleOffline)
+      window.removeEventListener('online', handleOnline)
+    }
+  }, [])
 
   const fetchData = async () => {
     const allEvents = await getEvents()
@@ -59,7 +62,7 @@ const App = () => {
       <div className="alerts-container">
         {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
         {errorAlert.length > 0 && <ErrorAlert text={errorAlert} />}
-        {warningAlert.length > 0 && <WarningAlert text={warningAlert} /> }
+        {warningAlert.length > 0 && <WarningAlert text={warningAlert} />}
       </div>
 
       <CitySearch
@@ -73,11 +76,14 @@ const App = () => {
         onNumberChange={setCurrentNumberOfEvents}
         setErrorAlert={setErrorAlert}
       />
-      <CityEventsChart allLocations={allLocations} events={events} />      
+      <div className="charts-container">
+        <EventGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
       <h2>Events</h2>
       <EventList events={events} />
     </div>
-  );
-};
+  )
+}
 
 export default App
