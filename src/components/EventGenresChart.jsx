@@ -11,7 +11,7 @@ import {
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
 
-  const genres = ['React', 'Javascript', 'Node', 'JQuery', 'Angular']
+  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular']
   
 
 
@@ -29,10 +29,11 @@ const EventGenresChart = ({ events }) => {
       return {
         name: genre,
         value: filteredEvents.length,
-      }
-    })
-    return data
-  }
+      };
+    });
+    return data;
+  };
+
   const renderCustomizedLabel = ({
     cx,
     cy,
