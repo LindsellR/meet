@@ -38,19 +38,21 @@ const EventGenresChart = ({ events }) => {
     cx,
     cy,
     midAngle,
+    innerRadius,
     outerRadius,
     percent,
     index,
   }) => {
     const RADIAN = Math.PI / 180
-    const radius = outerRadius
+    //const radius = outerRadius
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07
     const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07
     return percent ? (
       <text
         x={x}
         y={y}
-        fill="#8884d8"
+        fill="white"
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
       >
@@ -68,7 +70,7 @@ const EventGenresChart = ({ events }) => {
          fill="#8884d8"
          labelLine={false}
          label={renderCustomizedLabel}
-         outerRadius={120}           
+         outerRadius={150}           
        />
      </PieChart>
    </ResponsiveContainer>
