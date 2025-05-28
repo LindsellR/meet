@@ -24,18 +24,21 @@ const NumberOfEvents = ({ number, onNumberChange, setErrorAlert }) => {
   }
 
   return (
-    <div id="number-of-events">
-      <label htmlFor="event-count">Number of events</label>
-      <input
-        type="text"
-        inputMode="numeric"
-        id="event-count"
-        aria-label="Number of events"
-        data-testid="number-input"
-        value={inputValue}
-        onChange={handleInputChanged}
-        min="1"
-      />
+    <div className="form-wrapper">
+      <div className="form-group form-group--compact">
+        <label htmlFor="event-count">Number of events</label>
+        <input
+          type="text"
+          inputMode="numeric"
+          id="event-count"
+          aria-label="Number of events"
+          data-testid="number-input"
+          value={inputValue}
+          onChange={handleInputChanged}
+          min="1"
+          className="input input--small"
+        />
+      </div>
     </div>
   )
 }

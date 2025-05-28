@@ -34,8 +34,25 @@ p {
   margin: 5px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group--compact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+input{
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
@@ -46,16 +63,10 @@ input[type='number'] {
   height: 38px;
   margin-bottom: 20px;
 }
-
-.city {
-  width: 250px;
-}
-
-#city-search {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  position: relative;
+.input--small {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  width: 4rem;
 }
 
 .suggestions {
@@ -69,15 +80,11 @@ input[type='number'] {
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
 
-#number-of-events {
-  display: flex;
-  width: 500px;
-  margin: auto;
-  padding-right: 120px;
-}
 label {
-  padding-left: 60px;
+  padding-left: 10px;
   padding-right: 10px;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .suggestions > li {
@@ -155,8 +162,7 @@ label {
   }
 
   .city,
-  .suggestions,
-  #number-of-events {
+  .suggestions {
     width: 100%;
   }
 
@@ -171,9 +177,5 @@ label {
     width: 100%;
     max-width: 300px;
     text-align: center;
-  }
-
-  label {
-    padding: 0;
   }
 }

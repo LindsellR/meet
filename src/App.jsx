@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CitySearch from './components/CitySearch'
+import CityEventsChart from './components/CityEventsChart'
 import EventList from './components/EventList'
 import NumberOfEvents from './components/NumberOfEvents'
 import { extractLocations, getEvents } from './api'
@@ -58,7 +59,7 @@ const App = () => {
       <div className="alerts-container">
         {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
         {errorAlert.length > 0 && <ErrorAlert text={errorAlert} />}
-        {warningAlert.length > 0 && <WarningAlert text={warningAlert} />}
+        {warningAlert.length > 0 && <WarningAlert text={warningAlert} /> }
       </div>
 
       <CitySearch
@@ -72,6 +73,8 @@ const App = () => {
         onNumberChange={setCurrentNumberOfEvents}
         setErrorAlert={setErrorAlert}
       />
+      <CityEventsChart allLocations={allLocations} events={events} />      
+      <h2>Events</h2>
       <EventList events={events} />
     </div>
   );

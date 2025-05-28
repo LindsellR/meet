@@ -35,34 +35,35 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     setQuery(value)
     setShowSuggestions(false) // to hide the list
     setCurrentCity(value)
-    setInfoAlert("")
+    setInfoAlert('')
   }
 
   return (
-    <div id="city-search">
-      <label htmlFor="city">Search a city nearby</label>
-      <input
-        type="text"
-        className="city"
-        placeholder="Search for a city"
-        value={query}
-        onFocus={() => setShowSuggestions(true)}
-        onChange={handleInputChanged}
-      />
-      {showSuggestions ? (
-        <ul className="suggestions">
-          {suggestions.map((suggestion) => {
-            return (
+    <div className="form-wrapper">
+      <div className="form-group">
+        <label htmlFor="city">Search for a city close to you </label>
+        <input
+          type="text"
+          id="city"
+          className="input"
+          placeholder="Search for a city"
+          value={query}
+          onFocus={() => setShowSuggestions(true)}
+          onChange={handleInputChanged}
+        />
+        {showSuggestions && (
+          <ul className="suggestions">
+            {suggestions.map((suggestion) => (
               <li onClick={handleItemClicked} key={suggestion}>
                 {suggestion}
               </li>
-            )
-          })}
-          <li key="See all cities" onClick={handleItemClicked}>
-            <b>See all cities</b>
-          </li>
-        </ul>
-      ) : null}
+            ))}
+            <li key="See all cities" onClick={handleItemClicked}>
+              <b>See all cities</b>
+            </li>
+          </ul>
+        )}
+      </div>
     </div>
   )
 }
