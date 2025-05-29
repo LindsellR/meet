@@ -134,7 +134,7 @@ label {
 .charts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 2rem;
   padding: 1rem;
   overflow: visible;
 }
