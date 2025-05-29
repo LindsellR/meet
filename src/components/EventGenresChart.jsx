@@ -11,8 +11,9 @@ import {
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
 
-  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular']
-  
+  const genres = [ 'React','Node', 'JavaScript', 'jQuery', 'Angular']
+  const colors = ['#DD0000', '#00DD00', '#0000DD', '#DDDD00', '#DD00DD'];
+
 
 
   useEffect(() => {
@@ -31,28 +32,26 @@ const EventGenresChart = ({ events }) => {
         value: filteredEvents.length,
       };
     });
-    return data;
   };
 
   const renderCustomizedLabel = ({
     cx,
     cy,
     midAngle,
-    innerRadius,
     outerRadius,
     percent,
     index,
   }) => {
     const RADIAN = Math.PI / 180
-    //const radius = outerRadius
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07
-    const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07
+    const radius = outerRadius
+   //const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.05
+    const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.05
     return percent ? (
       <text
         x={x}
         y={y}
-        fill="white"
+        fill={colors[index]}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
       >
@@ -67,11 +66,13 @@ const EventGenresChart = ({ events }) => {
        <Pie
          data={data}
          dataKey="value"
-         fill="#8884d8"
          labelLine={false}
          label={renderCustomizedLabel}
          outerRadius={150}           
        />
+       {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+))}
      </PieChart>
    </ResponsiveContainer>
  );
