@@ -25,7 +25,7 @@ const NumberOfEvents = ({ number, onNumberChange, setErrorAlert }) => {
 
   return (
     <div className="form-wrapper">
-      <div id="number-of-events" className="form-group">
+      <div id="number-of-events">
         <label htmlFor="event-count">Number of events displayed</label>
         <input
           type="text"

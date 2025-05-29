@@ -40,7 +40,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
   return (
     <div className="form-wrapper">
-      <div id="city-search" className="form-group">
+      <div id="city-search" >
         <label htmlFor="city">Choose a city close to you </label>
         <input
           type="text"

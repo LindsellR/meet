@@ -41,7 +41,6 @@ const EventGenresChart = ({ events }) => {
   }) => {
     const RADIAN = Math.PI / 180
     const radius = outerRadius
-    //const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
     const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.1
     const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.1
     return percent ? (
@@ -58,8 +57,8 @@ const EventGenresChart = ({ events }) => {
   }
 
   return (
-    <ResponsiveContainer width="99%" height={400}>
-      <PieChart>
+    <ResponsiveContainer width="99%" height={450}>
+      <PieChart margin={{ top: 20, right: 20, bottom: 40, left: 20 }}>
         <Pie
           data={data}
           dataKey="value"
@@ -71,8 +70,10 @@ const EventGenresChart = ({ events }) => {
             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
           ))}
         </Pie>
+        <Legend layout="vertical" align="left" verticalAlign="center" wrapperStyle={{marginRight: "10px", paddingTop: "50px"}}/>
       </PieChart>
     </ResponsiveContainer>
+    
   )
 }
 
