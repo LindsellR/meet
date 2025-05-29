@@ -11,28 +11,25 @@ import {
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
 
-  const genres = [ 'React','Node', 'JavaScript', 'jQuery', 'Angular']
-  const colors = ['#DD0000', '#00DD00', '#0000DD', '#DDDD00', '#DD00DD'];
-
-
+  const genres = ['React', 'Node', 'JavaScript', 'jQuery', 'Angular']
+  const colors = ['#DD0000', '#00DD00', '#0000DD', '#DDDD00', '#DD00DD']
 
   useEffect(() => {
-    console.log(getData());
+    console.log(getData())
     setData(getData())
   }, [`${events}`])
- 
 
   const getData = () => {
     return genres.map((genre) => {
       const filteredEvents = events.filter((event) =>
-         event.summary?.toLowerCase().includes(genre.toLowerCase())
+        event.summary?.toLowerCase().includes(genre.toLowerCase())
       )
       return {
         name: genre,
         value: filteredEvents.length,
-      };
-    });
-  };
+      }
+    })
+  }
 
   const renderCustomizedLabel = ({
     cx,
@@ -44,7 +41,7 @@ const EventGenresChart = ({ events }) => {
   }) => {
     const RADIAN = Math.PI / 180
     const radius = outerRadius
-   //const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
+    //const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
     const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.1
     const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.1
     return percent ? (
@@ -61,21 +58,22 @@ const EventGenresChart = ({ events }) => {
   }
 
   return (
-   <ResponsiveContainer width="99%" height={400}>
-     <PieChart>
-       <Pie
-         data={data}
-         dataKey="value"
-         labelLine={false}
-         label={renderCustomizedLabel}
-         outerRadius={120}           
-       />
-       {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-))}
-     </PieChart>
-   </ResponsiveContainer>
- );
-};
+    <ResponsiveContainer width="99%" height={400}>
+      <PieChart>
+        <Pie
+          data={data}
+          dataKey="value"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={120}
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+  )
+}
 
 export default EventGenresChart
