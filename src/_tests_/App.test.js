@@ -11,6 +11,7 @@ import { getEvents } from '../api'
 import App from '../App'
 import mockData from '../mock-data'
 
+
 let container
 
 describe('<App /> component', () => {
