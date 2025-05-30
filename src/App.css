@@ -13,7 +13,7 @@
   width: 100%;
   text-align: center;
   box-sizing: border-box;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
 }
 
@@ -37,10 +37,12 @@ p {
 }
 
 .form-wrapper {
+   width: 500px;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
   padding: 1rem;
+  
 }
 
 input{
@@ -49,11 +51,10 @@ input{
   outline: none;
   border: 1px solid #ccc;
   font-size: 14px;
-  line-height: 20px;
-  align-self: center;
   height: 38px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 }
+
 .input--small {
   font-size: 0.9rem;
   padding: 0.25rem 0.5rem;
