@@ -23,7 +23,6 @@ ul {
 }
 
 header h1 {
-  width: 6%;
   background-color: #3f4758;
   padding: 1.5rem;
   color: white;
@@ -71,9 +70,9 @@ input {
   position: absolute;
   background-color: rgb(252, 251, 251);
   border: 1px solid #ccc;
-  width: 100%;
+  width:250px;
   max-height: 200px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   z-index: 10;
 }
 
@@ -178,7 +177,7 @@ label {
 
   .city,
   .suggestions {
-    width: 100%;
+    width: 50%;
   }
 
   .event {
