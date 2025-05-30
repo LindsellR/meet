@@ -80,7 +80,7 @@ const App = () => {
         <EventGenresChart events={events} />
         <CityEventsChart allLocations={allLocations} events={events} />
       </div>
-      <h2>Events</h2>
+      <h2>Event List</h2>
       <EventList events={events} />
     </div>
   )
