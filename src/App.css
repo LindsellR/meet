@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
 .App {
   display: flex;
   flex-direction: column;
@@ -10,11 +11,10 @@
 }
 
 .App * {
-  width: 100%;
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 ul {
@@ -23,7 +23,7 @@ ul {
 }
 
 header h1 {
-  width: 100%;
+  width: 6%;
   background-color: #3f4758;
   padding: 1.5rem;
   color: white;
@@ -32,27 +32,30 @@ header h1 {
   border-radius: 10px;
 }
 
+h2 {
+  padding-top: 2rem;
+}
+
 p {
   margin: 5px 0;
 }
 
 .form-wrapper {
-   width: 500px;
+  width: 500px;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
   padding: 1rem;
-  
 }
 
-input{
+input {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
   border: 1px solid #ccc;
   font-size: 14px;
   height: 38px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .input--small {
@@ -96,7 +99,7 @@ label {
 }
 
 .event {
-  max-width: 80%;
+  max-width: 60%;
   padding: 10px 10px 35px;
   margin: 20px auto;
   text-align: left;
@@ -135,25 +138,22 @@ label {
 .charts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 1rem;
-  overflow: visible;
+  border: solid 1px;
 }
 
 .Alert {
-  max-width: 600px;    
+  max-width: 600px;
   width: 100%;
-  pointer-events: auto; 
+  pointer-events: auto;
   margin: 0, auto;
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 0.75rem;
-  display: inline-flex;  
+  display: inline-flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
-
 
 @media (max-width: 600px) {
   .App * {
@@ -180,7 +180,7 @@ label {
   }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .charts-container {
     grid-template-columns: 1fr;
   }

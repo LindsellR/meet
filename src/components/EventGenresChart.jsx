@@ -58,13 +58,13 @@ const EventGenresChart = ({ events }) => {
 
   return (
     <ResponsiveContainer width="99%" height={400}>
-      <PieChart margin={{ top: 20, right: 0, bottom: 40, left: 20 }}>
+      <PieChart>
         <Pie
           data={data}
           dataKey="value"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={120}
+          outerRadius={130}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
