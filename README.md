@@ -1,4 +1,28 @@
-# React + Vite
+# The Meet App - Built with React + Vite
+
+## Project Overview
+A serverless progressive web application (PWA) built using a test driven development (TDD) approach and utilising a Google Calendars API to fetch events. The app uses OAuth2 authentication and AWS serverless functions for the authorisation server.
+
+## Technologies Used
+- **React**
+- **Google Calendar API**
+- **AWS Lambda**
+- **OAuth2 Authentication**
+- **Jest-Cucumber**
+- **Rechart Charting Library**
+
+## TDD/BDD
+This app was built using a Test-Driven Development (TDD) and Behavior-Driven Development (BDD) approach, resulting in more efficient and higher-quality code. By writing code to meet specific requirements from the start, this methodology ensures better alignment with user needs and app functionality.
+Unit and integration tests were used to identify and resolve bugs early, focusing on individual units and their interactions. BDD and end-to-end testing allowed user-facing issues to be detected and addressed throughout development.
+The process included:
+- **Creating user stories based on user requirements and app functionality.**
+- **Translating user stories into multiple test scenarios using Jest-Cucumber.**
+- **Writing unit tests for each function.**
+- **Implementing and testing integration use cases.**
+- **Writing acceptance tests for non-developers and conducting automated end-to-end tests.**
+- **Implementing Progressive Web App (PWA) features to support offline use.**
+- **Visualizing event data using the Recharts charting library**
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -6,6 +30,14 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Key Features
+- **Filter Events by City.**
+- **Show/Hide Event Details.**
+- **Specify Number of Events.**
+- **Use the App When Oﬄine.**
+- **Add an App Shortcut to the Home Screen.**
+- **Display Charts Visualizing Event Details.**
 
 ## Feature 1: Filter Events by City
 
