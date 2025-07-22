@@ -162,7 +162,7 @@ To run unit, integration, and end-to-end tests:
 npm test. 
   
 Or specifically:  
-npm run test:unit
+npm run test:unit. 
 npm run test:e2e. 
   
 Note: The app uses Jest and Jest-Cucumber for tests.
