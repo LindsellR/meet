@@ -1,5 +1,15 @@
 # The Meet App - Built with React + Vite
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [TDD/BDD Process](#tddbdd)
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Running the App Locally](#running-the-app-locally)
+- [Running Tests](#running-tests)
+
+
 ## Project Overview
 A serverless progressive web application (PWA) built using a test driven development (TDD) approach and utilising a Google Calendars API to fetch events. The app uses OAuth2 authentication and AWS serverless functions for the authorisation server.
 
@@ -130,3 +140,29 @@ and the event data has been cached
 ## Architectural Diagram
 
 [React Component Diagram.pdf](https://github.com/user-attachments/files/20179431/React.Component.Diagram.pdf)
+
+## Installation
+
+To install and run the app locally:
+
+```bash
+git clone https://github.com/LindsellR/meet.git
+cd meet
+npm install
+```
+
+## Running the App Locally
+
+Start the development server:  
+npm run dev
+
+## Running Tests
+
+To run unit, integration, and end-to-end tests:  
+npm test. 
+  
+Or specifically:  
+npm run test:unit
+npm run test:e2e. 
+  
+Note: The app uses Jest and Jest-Cucumber for tests.
